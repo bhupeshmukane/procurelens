@@ -1,4 +1,7 @@
-const API_BASE = (import.meta as any).env?.VITE_API_BASE_URL || '/api';
+const isLocal = typeof window !== 'undefined' && 
+  (window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1');
+
+const API_BASE = (import.meta as any).env?.VITE_API_BASE_URL || (isLocal ? '/api' : 'https://procurelens-api.onrender.com/api');
 
 export interface Requirement {
   id?: string;
