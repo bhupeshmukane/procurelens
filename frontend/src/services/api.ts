@@ -1,4 +1,5 @@
-const API_BASE = 'https://procurelens-api.onrender.com';
+const API_BASE = (import.meta as any).env?.VITE_API_BASE_URL || '/api';
+
 export interface Requirement {
   id?: string;
   category: string;

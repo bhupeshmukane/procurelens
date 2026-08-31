@@ -12,10 +12,17 @@ app = FastAPI(
     version="1.0.0"
 )
 
-# Enable CORS for local Vite dev server
+# Enable CORS for Cloudflare production Worker and local dev environments
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["*"],
+    allow_origins=[
+        "https://procurelens.stemfusion4.workers.dev",
+        "http://localhost:3000",
+        "http://localhost:5173",
+        "http://127.0.0.1:8000",
+        "http://127.0.0.1:3000",
+        "*",
+    ],
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
